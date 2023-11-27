@@ -187,3 +187,5 @@ This folder contains utility functions e.g. functions for the usage of browser's
 ## Locales
 
 The `locales` folder contains localization files for the application.
+
+🍀
