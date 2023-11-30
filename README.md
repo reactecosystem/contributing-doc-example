@@ -174,7 +174,31 @@ More about the Atomic Design methodology can be found on the link below:
 
 https://atomicdesign.bradfrost.com/
 
-In our application we will use 4 levels, atoms, moleculs, organisms and pages and potentially expand later.
+Components should be named-exported. Every folder containing components should have a barrel file (`index.ts`) which will re-export all of the components contained.
+
+Consider the following structure:
+
+```
+├── components/
+│   ├── ComponentOne/
+│   │   ├── ComponentOne.tsx
+│   │   └── ComponentOneRelated.ts
+│   ├── ComponentTwo/
+│   │   ├── ComponentTwo.tsx
+│   │   └── ComponentTwoRelated.tsx
+│   ├── ComponentThree.tsx
+│   └── index.ts
+```
+
+`component` folder contains three components and a barrel file. `ComponentOne` and `ComponentTwo` come with other files related to them and because of that they are contained in their own folder. Component should be same-named as the folder; the folder shouldn't contain a barrel file. The reason for this is to be able to open component file directly through searching and not to be confused by plenty of `index.ts`.
+
+Barrel file of the `components` folder should export the component and should look like this:
+
+```ts
+export * from './ComponentOne/ComponentOne'
+export * from './ComponentThree/ComponentThree'
+export * from './ComponentTwo'
+```
 
 ## Providers
 
